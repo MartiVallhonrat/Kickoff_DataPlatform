@@ -1,0 +1,372 @@
+{
+  "datasets": [
+    {
+      "name": "dea4d6f3",
+      "displayName": "marts_matches_teams",
+      "queryLines": [
+        "SELECT * FROM workspace.default.marts_matches_teams"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "e9e88e28",
+      "displayName": "matches_teams",
+      "layout": [
+        {
+          "widget": {
+            "name": "e242533d",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "dea4d6f3",
+                  "fields": [
+                    {
+                      "name": "matchday",
+                      "expression": "`matchday`"
+                    },
+                    {
+                      "name": "sum(full_time_away)",
+                      "expression": "SUM(`full_time_away`)"
+                    },
+                    {
+                      "name": "sum(full_time_home)",
+                      "expression": "SUM(`full_time_home`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "matchday",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "axis": {
+                    "hideLabels": false
+                  },
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 0
+                    }
+                  }
+                },
+                "y": {
+                  "fields": [
+                    {
+                      "fieldName": "sum(full_time_away)",
+                      "displayName": "Away Goals"
+                    },
+                    {
+                      "fieldName": "sum(full_time_home)",
+                      "displayName": "Home Goals"
+                    }
+                  ],
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "axis": {
+                    "title": "Goals"
+                  },
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Away and Home Goals per matchday"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "4442acba",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "dea4d6f3",
+                  "fields": [
+                    {
+                      "name": "count(winner)",
+                      "expression": "COUNT(`winner`)"
+                    },
+                    {
+                      "name": "winner",
+                      "expression": "`winner`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "count(winner)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "axis": {
+                    "title": "matches won"
+                  }
+                },
+                "y": {
+                  "fieldName": "winner",
+                  "scale": {
+                    "type": "categorical"
+                  },
+                  "axis": {
+                    "title": "local status"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total Wins on Local Advantage"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 6,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "3058739b",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "dea4d6f3",
+                  "fields": [
+                    {
+                      "name": "count(winner_name)",
+                      "expression": "COUNT(`winner_name`)"
+                    },
+                    {
+                      "name": "winner_name",
+                      "expression": "`winner_name`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "count(winner_name)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "matches won"
+                },
+                "y": {
+                  "fieldName": "winner_name",
+                  "scale": {
+                    "type": "categorical"
+                  },
+                  "displayName": "winner name"
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total wins by team\n",
+                "headerAlignment": "left"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "c427c5c8",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "30386372",
+            "queries": [
+              {
+                "name": "dashboards/01f09d55ae8e1579bf846eaa264d6fcb/datasets/01f09d55d6de1bd6aa0c58c6a38608b6_winner_name",
+                "query": {
+                  "datasetName": "dea4d6f3",
+                  "fields": [
+                    {
+                      "name": "winner_name",
+                      "expression": "`winner_name`"
+                    },
+                    {
+                      "name": "winner_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "winner_name",
+                    "queryName": "dashboards/01f09d55ae8e1579bf846eaa264d6fcb/datasets/01f09d55d6de1bd6aa0c58c6a38608b6_winner_name"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "showDescription": false
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    }
+  }
+}
